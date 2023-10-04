@@ -62,9 +62,14 @@ docker run --rm --name deploy-pgAdminhn \
 Executar o comando ````docker-compose -f docker-compose-unifeso.yml up -d```` desde que dentro do terminal bash (tipo wsl2 ou linux) e com o serviço ````dockerd```` rodando.
 
 ## Outros containers
+### Redis
+
 ````docker run --name redis-server-deploy -p 6379:6379 redis````
 
 ````docker exec -it redis-server-deploy redis-cli````
+
+### Azure SQL EDGE
+````docker run --cap-add SYS_PTRACE -e 'ACCEPT_EULA=1' -e 'MSSQL_SA_PASSWORD=Abcd1234%' -e 'MSSQL_PID=Developer' -p 1433:1433 --name azuresqledge -d mcr.microsoft.com/azure-sql-edge:2.0.0````
 
 ## Outros comandos utilizados
 
@@ -90,7 +95,7 @@ Executar o comando ````docker-compose -f docker-compose-unifeso.yml up -d```` de
 
 ````docker volume ````
 
-### limpar ambiente local
+### Para  ambiente local
 
 ````docker container rm -f $(docker ps -a -q)````
 
