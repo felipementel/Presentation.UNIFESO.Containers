@@ -90,6 +90,14 @@ Executar o comando ````docker-compose -f docker-compose-unifeso.yml up -d```` de
 
 ````docker volume ````
 
+### limpar ambiente local
+
+````docker container rm -f $(docker ps -a -q)````
+
+````docker volume rm $(docker volume ls -q)````
+
+````docker image rm -f $(docker image ls -a -q)````
+
 ````docker system prune````
 
 :white_check_mark:
