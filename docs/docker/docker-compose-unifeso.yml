@@ -22,15 +22,23 @@ services:
     environment:
       POSTGRES_USER: user
       POSTGRES_PASSWORD: deploy
-    volumes:
-      - ./postgres-data-unifeso:/var/lib/postgresql/data
+    networks:
+      - deploy-net
 
   pgAdminhn-canal-deploy:
     image: dpage/pgadmin4:7.7
     ports:
       - 9046:80
       - 9047:443
+    depends_on:
+      - postgres-canal-deploy
     environment:
       PGADMIN_DEFAULT_EMAIL: user@deploy.com
       PGADMIN_DEFAULT_PASSWORD: deploy
       PGADMIN_DISABLE_POSTFIX: "true"
+    networks:
+      - deploy-net
+
+networks:
+  deploy-net:
+    driver: bridge
