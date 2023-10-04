@@ -1,0 +1,36 @@
+# docker-compose -f docker-compose-unifeso.yml up -d
+# docker-compose -f docker-compose-unifeso.yml down --remove-orphans
+
+version: "3.7"
+
+services:
+  sonar-canal-deploy:
+    image: sonarqube:9.9.2-community
+    ports:
+      - 9044:9000
+
+  rabbit-canal-deploy:
+    image: rabbitmq:3.12.6-management
+    ports:
+      - 15672:15672
+    environment:
+      RABBITMQ_DEFAULT_USER: admin
+      RABBITMQ_DEFAULT_PASS: deploy
+
+  postgres-canal-deploy:
+    image: postgres:16.0
+    environment:
+      POSTGRES_USER: user
+      POSTGRES_PASSWORD: deploy
+    volumes:
+      - ./postgres-data-unifeso:/var/lib/postgresql/data
+
+  pgAdminhn-canal-deploy:
+    image: dpage/pgadmin4:7.7
+    ports:
+      - 9046:80
+      - 9047:443
+    environment:
+      PGADMIN_DEFAULT_EMAIL: user@deploy.com
+      PGADMIN_DEFAULT_PASSWORD: deploy
+      PGADMIN_DISABLE_POSTFIX: "true"
