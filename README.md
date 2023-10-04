@@ -95,6 +95,12 @@ Executar o comando ````docker-compose -f docker-compose-unifeso.yml up -d```` de
 
 ````docker volume ````
 
+````docker container inspect <container_id>````
+
+````docker container logs <container_id>````
+
+````docker image history <namespace/project_name:tag>```` 
+
 ### Para  ambiente local
 
 ````docker container rm -f $(docker ps -a -q)````
