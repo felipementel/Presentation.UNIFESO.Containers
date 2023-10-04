@@ -5,7 +5,6 @@ Agradeço a oportunidade de poder apresentar uma pequena parte do que se pode fa
 Abaixo uma lista de comandos que foram executados durante a apresentação, realizada online, no dia 04/10/2023 as 20:00.
 
 # Comandos
-Executar o comando ````docker-compose -f docker-compose-unifeso.yml up -d```` desde que dentro do terminal bash (tipo wsl2 ou linux) e com o serviço ````dockerd```` rodando.
 
 ### Lista de containers criados
 
@@ -14,6 +13,7 @@ Para executar:
 > Por meio de criação de container Docker, execute o comando
 ````docker container run --rm -d --name sonar-canal-deploy -p 9044:9000 sonarqube:9.9.2-community````
 e depois abra seu navegador na url ````https://localhost:9044````
+> > informar o user|senha=admin
 ````
 docker container run --rm -d --name sonar-canal-deploy \
 -p 9044:9000 \
@@ -22,6 +22,7 @@ sonarqube:9.9.2-community
 ## - RabbitMQ
 > Por meio de criação de container Docker, execute o comando
 e depois abra seu navegador na url ````https://localhost:15672````
+> > > informar o usuario=user e e password=deploy
 ````
 docker run --rm -d \
 --hostname my-rabbit \
@@ -45,6 +46,7 @@ postgres:16.0
 ## - pgAdmin
 > Por meio de criação de container Docker, execute o comando
 e depois abra seu navegador na url ````https://localhost:9047```` ou ````http://localhost:9046````
+> informar o email user@deploy.com e senha deploy
 ````
 docker run --rm --name deploy-pgAdminhn \
 -p 9046:80 \
@@ -54,6 +56,15 @@ docker run --rm --name deploy-pgAdminhn \
 -e PGADMIN_DISABLE_POSTFIX="true"\
  dpage/pgadmin4:7.7
 ````
+** Confirme que todos os containers acima não estão sendo executados para conseguir executar o comando abaixo:
+
+
+Executar o comando ````docker-compose -f docker-compose-unifeso.yml up -d```` desde que dentro do terminal bash (tipo wsl2 ou linux) e com o serviço ````dockerd```` rodando.
+
+## Outros containers
+````docker run --name redis-server-deploy -p 6379:6379 redis````
+
+````docker exec -it redis-server-deploy redis-cli````
 
 ## Outros comandos utilizados
 
