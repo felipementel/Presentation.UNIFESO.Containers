@@ -21,7 +21,7 @@ sonarqube:9.9.2-community
 ````
 ## - RabbitMQ
 > Por meio de criação de container Docker, execute o comando
-e depois abra seu navegador na url ````https://localhost:15672````
+e depois abra seu navegador na url ````http://localhost:15672````
 > > > informar o usuario=user e e password=deploy
 ````
 docker run --rm -d \
