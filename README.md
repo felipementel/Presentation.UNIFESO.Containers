@@ -1,4 +1,7 @@
-# Presentation.UNIFESO.Containers
+# Workshop UNIFESO
+# Estratégia de containers utilizando Docker e WSL2
+
+![alt text](./img/capa.png "Capa")
 
 Agradeço a oportunidade de poder apresentar uma pequena parte do que se pode fazer utilizando estratégia de containers com docker e wsl2.
 
